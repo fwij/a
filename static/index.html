@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G5VBCB2YQN');
+  </script> 
+  <title>Art Class</title>
+  <link rel="icon" href="icon.png">
+
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/navbar.css" />
+
+  <link href="https://unpkg.com/movement.css/movement.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e897e5d5dc.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.counter.dev/script.js" data-id="26de4bec-9f60-4b7f-aa35-2ca7517a3743" data-utcoffset="-6"></script>
+
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="particles-js"></div>
+  <script src="js/particles.min.js"></script>
+  <script src="js/particles.js"></script>
+  
+  <div id="navbar"></div>
+  <script src="js/navbar.js"></script>
+  
+  <br><br><br>
+  <h1>Welcome to Art Class</h1>
+  <p>Your hub for school entertainment.</p>
+  
+  <div id="homepage-cards">
+    
+    <div class="card" onclick="window.location.href = '/gs.html'">
+      <i class="fa-solid fa-gamepad cardicon"></i>
+      <div class="card-content">
+        <h4>Games</h4>
+      </div>
+    </div>
+    
+    <div class="card" onclick="window.location.href = '/apps.html'">
+      <i class="fa-brands fa-app-store-ios"></i>      
+      <h4>Apps</h4>
+      
+    </div>
+    
+    <div class="card" onclick="window.location.href = '/utils.html'">
+      <i class="fa-solid fa-wrench"></i>
+      <div class="card-content">
+        <h4>Utilities</h4>
+      </div>
+    </div>
+
+    <div class="card" onclick="window.location.href = '/settings.html'">
+      <i class="fa-solid fa-gear"></i>
+      <div class="card-content">
+        <h4>Settings</h4>
+      </div>
+    </div>
+
+    <div id="blankcard" class="card" onclick="blank()" style="display: none">
+      <i class="fa-solid fa-eye-slash"></i>
+      <div class="card-content">
+        <h4>about:blank</h4>
+      </div>
+    </div>
+
+  </div>
+  
+  <footer>Copyright &copy; 2023 Art Class</footer>
+  
+  <script src="js/cloak.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+      server: '967446591373983804', // Art Class
+      channel: '1074366934356852896' // #〈💬〉guest-chat
+    })
+  </script>
+  <script>
+    if (window.self == window.top) document.getElementById("blankcard").style.removeProperty("display")
+    function blank() {
+      const tab = window.open('about:blank', '_blank');
+      const iframe = tab.document.createElement('iframe');
+      const stl = iframe.style;
+      stl.border = stl.outline = 'none';
+      stl.width = '100vw';
+      stl.height = '100vh';
+      stl.position = 'fixed';
+      stl.left = stl.right = stl.top = stl.bottom = '0';
+      iframe.src = self.location;
+      tab.document.body.appendChild(iframe);
+      window.parent.window.location.replace('https://classroom.google.com')
+    }
+  </script>
+</body>

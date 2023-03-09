@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5VBCB2YQN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G5VBCB2YQN');
+  </script> 
+  <script src="https://cdn.counter.dev/script.js" data-id="26de4bec-9f60-4b7f-aa35-2ca7517a3743" data-utcoffset="-6"></script>
+  <title>Art Class</title> 
+  <link href="icon.png" rel="icon" />
+  <link href="styles/page.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/e897e5d5dc.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  
+  <div id="loadingdiv">
+    <div class="msg">
+      <div class="lds-dual-ring"></div>
+      <!--<img src="icon.gif" class="lds-dual-ring" />-->
+      <p class="info">
+        Loading content, please be patient! <br> <br>
+        <span id="note"></span>
+      </p>
+    </div>
+  </div>
+  
+  
+  <iframe id="frame"></iframe>
+  <div id="footer">
+    <p>Copyright &copy; 2023 Art Class <br>
+    All games and apps are copyright their respective owners</p>
+    <br> <a class="link2" href="/"><i class="fa-solid fa-house"></i> Home</a> <a class="link2" id="hidecrate"><i class="fa-solid fa-eye-slash"></i> Toggle Widgetbot</a>
+    <br>
+  </div>
+  
+  <script src="./uv/uv.bundle.js"></script>
+  <script src="./uv/uv.config.js"></script>
+  <script src="./data/games.js"></script>
+  <script src="./data/apps.js"></script>
+  <script src="js/cloak.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+      server: '967446591373983804', // Art Class
+      channel: '1074366934356852896' // #〈💬〉guest-chat
+    })
+    document.querySelector("#hidecrate").addEventListener("click", () => {
+      if (localStorage.getItem("crate") == "yes") {
+        crate.hide()
+        localStorage.setItem("crate", "no")
+      } else if (localStorage.getItem("crate") == "no") {
+        crate.show()
+        localStorage.setItem("crate", "yes")
+      } else {
+        localStorage.setItem("crate", "yes")
+      }
+    })
+
+    if (localStorage.getItem("crate") == "yes") {
+      crate.show()
+    } else if (localStorage.getItem("crate") == "no") {
+      crate.hide()
+    }
+    
+  </script>
+
+  <script>
+    
+    const params = new URLSearchParams(window.location.search)
+    if (params.get("game")) {
+      games.forEach(game => {
+        if (game.id != params.get("game")) return
+        document.title = `${game.title} | Art Class`
+        if (game.note) document.querySelector("#note").innerHTML = game.note
+        if (game.fullscreen) document.querySelector("#footer").style.display = "none"
+        navigator.serviceWorker.register('./loadsw.js', {
+          scope: __uv$config.prefix
+        }).then(() => {
+          document.querySelector("#frame").src = __uv$config.prefix + __uv$config.encodeUrl(game.url);
+          document.querySelector("#loadingdiv")[0].remove()
+          
+          
+        });
+        
+      })
+    } else if (params.get("app")) {
+      apps.forEach(app => {
+        if (app.id != params.get("app")) return
+        document.title = `${app.title} | Art Class`
+        navigator.serviceWorker.register('./loadsw.js', {
+          scope: __uv$config.prefix
+          
+        }).then(() => {
+          document.querySelector("#frame").src = __uv$config.prefix + __uv$config.encodeUrl(app.url);
+          document.querySelector("#loadingdiv")[0].remove()
+          if (app.fullscreen) document.querySelector("#footer").style.display = "none" 
+        });
+      })
+    } else if (params.get('url')) {
+      navigator.serviceWorker.register('./loadsw.js', {
+        scope: __uv$config.prefix
+        
+      }).then(() => {
+        document.querySelector("#frame").src = __uv$config.prefix + __uv$config.encodeUrl(params.get("url"));
+        document.querySelector("#loadingdiv")[0].remove()
+      });
+    } else if (params.get("app")) {
+      apps.forEach(app => {
+        if (app.id != params.get("app")) return
+        document.title = `${app.title} | Art Class`
+        navigator.serviceWorker.register('./loadsw.js', {
+          scope: __uv$config.prefix
+          
+        }).then(() => {
+          document.querySelector("#frame").src = __uv$config.prefix + __uv$config.encodeUrl(app.url);
+          document.querySelector("#loadingdiv")[0].remove()
+          if (app.fullscreen) document.querySelector("#footer").style.display = "none" 
+        });
+      })
+    }
+    
+    
+  </script>
+</body>
+
+</html>
